@@ -1,0 +1,9 @@
+---
+- name: Ensure Java is installed.
+  apt:
+    name: "{{ item }}"
+    state: installed
+    update_cache: yes
+    cache_valid_time: "{{ apt_cache_valid_time | default(3600) }}"
+
+  with_items: "{{ java_packages }}"
